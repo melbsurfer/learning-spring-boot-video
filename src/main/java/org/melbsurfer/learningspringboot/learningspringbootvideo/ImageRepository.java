@@ -17,4 +17,5 @@ public interface ImageRepository extends PagingAndSortingRepository<Image, Long>
      * @return
      */
     public Image findByName(String name);
+
 }
