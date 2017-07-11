@@ -1,11 +1,13 @@
 package org.melbsurfer.learningspringboot.learningspringbootvideo;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
  * Created by adrake on 7/8/17.
  */
+@Entity
 public class Image {
     /**
      * @Id for JPA primary key

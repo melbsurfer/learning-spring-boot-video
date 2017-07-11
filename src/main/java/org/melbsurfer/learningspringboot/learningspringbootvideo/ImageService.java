@@ -3,9 +3,11 @@ package org.melbsurfer.learningspringboot.learningspringbootvideo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Profile;
+//import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.FileSystemUtils;
@@ -33,7 +35,7 @@ public class ImageService {
     private static String UPLOAD_ROOT = "upload-dir";
 
     private final ImageRepository repository;
-    private final ResourceLoader resoureLoader;
+    private final ResourceLoader resourceLoader;
     /**
      *
      * @Autowired Invokes the constructor method passing in the
@@ -44,13 +46,13 @@ public class ImageService {
      * Uses Spring Framework recommended constructor based injection.
      *
      * @param repository reference to the Image repository
-     * @param resoureLoader used to interact with the file system
+     * @param resourceLoader used to interact with the file system
      */
     @Autowired
     public ImageService(ImageRepository repository, ResourceLoader resourceLoader){
 
         this.repository = repository;
-        this.resoureLoader = resourceLoader;
+        this.resourceLoader = resourceLoader;
     }
 
     /**
@@ -61,7 +63,7 @@ public class ImageService {
      * @return
      */
     public Resource findOneImage(String filename) {
-        return resoureLoader.getResource("file:" + UPLOAD_ROOT + "/" + filename);
+        return resourceLoader.getResource("file:" + UPLOAD_ROOT + "/" + filename);
     }
 
     /**
